@@ -1,8 +1,8 @@
 import type { FastifyInstance } from 'fastify';
 import { z } from 'zod';
-import { enqueue } from '../queue/index.js';
-import { insertOrder } from '../db/pg.js';
-import { publish } from '../ws/hub.js';
+import { enqueue } from '../queue/index';
+import { insertOrder } from '../db/pg';
+import { publish } from '../ws/hub';
 import { randomUUID } from 'crypto';
 
 export default async function route(app: FastifyInstance) {

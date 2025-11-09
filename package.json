@@ -6,14 +6,18 @@
   "scripts": {
     "dev": "node --import tsx src/app.ts",
     "start": "node --import tsx src/app.ts",
-    "test": "jest"
+    "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --runInBand"
   },
   "dependencies": {
+    "@fastify/cors": "^11.1.0",
+    "@fastify/formbody": "^8.0.2",
+    "@fastify/multipart": "^9.3.0",
     "@fastify/websocket": "^11.2.0",
     "bullmq": "^5.63.0",
     "dotenv": "^17.2.3",
     "fastify": "^5.6.1",
     "ioredis": "^5.8.2",
+    "node-fetch": "^3.3.2",
     "pg": "^8.16.3",
     "uuid": "^13.0.0",
     "zod": "^4.1.12"
@@ -21,8 +25,14 @@
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^24.10.0",
+    "@types/node-fetch": "^2.6.13",
     "@types/pg": "^8.15.6",
+    "@types/supertest": "^6.0.3",
+    "@types/ws": "^8.18.1",
+    "cross-env": "^10.1.0",
     "jest": "^30.2.0",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.5",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"

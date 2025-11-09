@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <h2>WebSocket Order Test</h2>
+  <pre id="log"></pre>
+  <script>
+    const orderId = "9faf0777-7725-405b-8512-294b1db53681";
+    const log = (msg) => document.getElementById("log").textContent += msg + "\n";
+    
+    try {
+      const ws = new WebSocket("ws://localhost:3000/ws/9faf0777-7725-405b-8512-294b1db53681");
+      ws.onopen = () => log("Connected");
+      ws.onmessage = (msg) => log(msg.data);
+      ws.onerror = (err) => log("Error: " + err.message);
+      ws.onclose = () => log("Closed");
+    } catch (err) {
+      log("Failed to connect: " + err);
+    }
+  </script>
+</body>
+</html>

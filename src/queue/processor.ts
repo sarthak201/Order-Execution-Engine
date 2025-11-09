@@ -1,7 +1,6 @@
-// src/queue/processor.ts
-import { DexRouter } from "../router/DexRouter.js";
-import { updateOrder } from "../db/pg.js";
-import { publish } from "../ws/hub.js";
+import { DexRouter } from "../router/DexRouter";
+import { updateOrder } from "../db/pg";
+import { publish } from "../ws/hub";
 
 export async function processJob(data: any) {
   const { id, amount } = data;
@@ -20,4 +19,6 @@ export async function processJob(data: any) {
     executed_price: exec.executedPrice,
   });
   await publish(id, { orderId: id, status: "confirmed", meta: exec });
+  
+  return { status: "confirmed", orderId: id, ...exec };
 }
